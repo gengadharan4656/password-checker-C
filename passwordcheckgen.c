@@ -33,51 +33,61 @@ void generatePassword() {
     }
     password[10] = '\0';
 
-    printf("\n Generated Strong Password: %s\n", password);
+    printf("\nGenerated Strong Password: %s\n", password);
 }
 
 int main() {
     char password[50];
     int length, num, special;
-    char choice;
+    int choice;
 
-    printf("===== PASSWORD STRENGTH CHECKER =====\n");
-    printf("Enter your password: ");
-    scanf("%s", password);
+    while (1) {
+        printf("\n===== PASSWORD UTILITY =====\n");
+        printf("1. Check Password Strength\n");
+        printf("2. Generate Strong Password\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    length = strlen(password);
-    num = hasNumber(password);
-    special = hasSpecialChar(password);
+        switch (choice) {
 
-    printf("\nPassword Analysis:\n");
-    printf("Length: %d\n", length);
-    printf("Contains Number: %s\n", num ? "Yes" : "No");
-    printf("Contains Special Character: %s\n", special ? "Yes" : "No");
+        case 1:
+            printf("\nEnter your password: ");
+            scanf("%s", password);
 
-    if (length < 6) {
-        printf("\nPassword Strength: WEAK \n");
-    } 
-    else if (length >= 6 && num && !special) {
-        printf("\nPassword Strength: MEDIUM \n");
-    } 
-    else if (length >= 8 && num && special) {
-        printf("\nPassword Strength: STRONG \n");
-    } 
-    else {
-        printf("\nPassword Strength: WEAK \n");
-    }
+            length = strlen(password);
+            num = hasNumber(password);
+            special = hasSpecialChar(password);
 
-    if (length < 6 || !num || !special) {
-        printf("\nDo you want me to generate a strong password for you? (y/n): ");
-        scanf(" %c", &choice);
+            printf("\nPassword Analysis:\n");
+            printf("Length: %d\n", length);
+            printf("Contains Number: %s\n", num ? "Yes" : "No");
+            printf("Contains Special Character: %s\n", special ? "Yes" : "No");
 
-        if (choice == 'y' || choice == 'Y') {
+            if (length < 6) {
+                printf("Password Strength: WEAK\n");
+            } 
+            else if (length >= 6 && num && !special) {
+                printf("Password Strength: MEDIUM\n");
+            } 
+            else if (length >= 8 && num && special) {
+                printf("Password Strength: STRONG\n");
+            } 
+            else {
+                printf("Password Strength: WEAK\n");
+            }
+            break;
+
+        case 2:
             generatePassword();
-        } else {
-            printf("\nOkay! Please consider improving your password.\n");
+            break;
+
+        case 3:
+            printf("\nThank you for using Password Utility!\n");
+            return 0;
+
+        default:
+            printf("\nInvalid choice! Please try again.\n");
         }
     }
-
-    printf("\nThank you for using Password Strength Checker!\n");
-    return 0;
 }
