@@ -22,7 +22,8 @@ int hasSpecialChar(char pwd[]) {
     return 0;
 }
 
-void generatePassword() {
+/* Fully random password */
+void generateRandomPassword() {
     char chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
     char password[12];
 
@@ -33,18 +34,37 @@ void generatePassword() {
     }
     password[10] = '\0';
 
-    printf("\nGenerated Strong Password: %s\n", password);
+    printf("\nGenerated Random Password: %s\n", password);
+}
+
+/* Customized password using user keyword */
+void generateCustomPassword() {
+    char keyword[30];
+    char special[] = "!@#$%^&*";
+    int num1, num2;
+
+    srand(time(NULL));
+
+    printf("\nEnter a keyword (name or word): ");
+    scanf("%s", keyword);
+
+    num1 = rand() % 10;
+    num2 = rand() % 10;
+    char sp = special[rand() % strlen(special)];
+
+    printf("\nGenerated Custom Password: %s%c%d%d\n",
+           keyword, sp, num1, num2);
 }
 
 int main() {
     char password[50];
     int length, num, special;
-    int choice;
+    int choice, subChoice;
 
     while (1) {
         printf("\n===== PASSWORD UTILITY =====\n");
         printf("1. Check Password Strength\n");
-        printf("2. Generate Strong Password\n");
+        printf("2. Generate Password\n");
         printf("3. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
@@ -79,7 +99,21 @@ int main() {
             break;
 
         case 2:
-            generatePassword();
+            printf("\nPassword Generation Mode:\n");
+            printf("1. Fully Random Password\n");
+            printf("2. Custom Password (Keyword Based)\n");
+            printf("Enter your choice: ");
+            scanf("%d", &subChoice);
+
+            if (subChoice == 1) {
+                generateRandomPassword();
+            } 
+            else if (subChoice == 2) {
+                generateCustomPassword();
+            } 
+            else {
+                printf("\nInvalid option!\n");
+            }
             break;
 
         case 3:
@@ -90,4 +124,4 @@ int main() {
             printf("\nInvalid choice! Please try again.\n");
         }
     }
-}
+}}
