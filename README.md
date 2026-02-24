@@ -59,3 +59,23 @@ password-utility/
 ## ▶️ How to Run
 
 ### 🔹 Using GCC (VS Code / Terminal)
+
+👤 Author
+
+Name: Genga Dharan
+
+Project Type: Console-based C Mini Project
+
+Purpose: Academic / Learning / Seminar Demonstration
+
+🚀 Future Enhancements
+
+Add uppercase and lowercase validation
+
+Enforce minimum password length in custom mode
+
+Save generated passwords to a file
+
+Mask password input
+
+Add retry and confirmation options
