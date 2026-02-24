@@ -56,10 +56,6 @@ password-utility/
 
 ---
 
-## ▶️ How to Run
-
-### 🔹 Using GCC (VS Code / Terminal)
-
 👤 Author
 
 Name: Genga Dharan
